@@ -1,7 +1,6 @@
-import { searchSubmittedHandler, getNewStockData, pollPrice, rootSaga, searchEnteredHandler, getPossibleData } from '../rootSaga'
 import { expectSaga, testSaga } from 'redux-saga-test-plan';
 import * as matchers from 'redux-saga-test-plan/matchers';
-import { throwError } from 'redux-saga-test-plan/providers';
+import { getNewStockData, getPossibleData, pollPrice, rootSaga, searchEnteredHandler, searchSubmittedHandler } from '../sagas/rootSaga';
 import stock from './mocks/newStockMock';
 
 const initialState = {

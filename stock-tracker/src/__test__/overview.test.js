@@ -1,9 +1,9 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
-import sampleData from './sampleData'
-import Overview from '../components/overview';
-import { render, screen, cleanup } from '@testing-library/react'
+import sampleData from './mocks/sampleData'
+import Overview from '../components/Overview';
+import { render, screen } from '@testing-library/react'
 
 const mockStore = configureStore([]);
 
@@ -71,8 +71,7 @@ const component = (store) => {
 
 
 
-describe('Overview Component', () => {
-    
+describe('Overview Component', () => {   
     it('should render empty for initial state',()=>{
         component(initialStore)
         const ininame = screen.getByTestId('company-name')
@@ -86,7 +85,7 @@ describe('Overview Component', () => {
     it('should render correct value for company name', () => {
         component(store)
         const name = screen.getByText('COMPANY OVERVIEW').closest('div').children[2]
-      expect(name.innerHTML).toBe(newState.companyName+'('+newState.symbol+')');
+      expect(name.innerHTML).toBe(newState.companyName+' ('+newState.symbol+')');
     });
 
     it('should render correct value for website', () => {

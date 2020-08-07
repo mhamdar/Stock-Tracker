@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { createSelector } from 'reselect'
-import { useDispatch, useSelector } from 'react-redux'
-import { OptionList, Option, SymbolTag, NameTag, ExchangeTag, ExchangeText,TagContainer,DropdownBody } from '../styled-components/dropdown.js'
+import React from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { DropdownBody, ExchangeTag, ExchangeText, NameTag, Option, OptionList, SymbolTag, TagContainer } from '../styled-components/dropdown.js';
 
 const DropDown = (props) => {
   
@@ -13,7 +12,10 @@ const DropDown = (props) => {
   
   const onClick = (symbol) =>{
     dispatch({ type: 'SEARCH_SUBMITTED', payload: symbol });
-    
+  }
+
+  const onBlurHandler = () => {
+    dispatch({ type: 'POSSIBLE_RECEIVED', payload: [] })
   }
 
   if(possible.length) {
@@ -23,10 +25,11 @@ const DropDown = (props) => {
                 {possible.map((optionName, index) => {
                 
                 return (
-                    <Option key={optionName.symbol} onClick={()=>onClick(optionName.symbol)} >
+                    <Option key={optionName.symbol} onMouseDown={()=>onClick(optionName.symbol)} onBlur={() => onBlurHandler}>
                     <SymbolTag>{optionName.symbol}</SymbolTag> <TagContainer><NameTag breakpoint={props.smallBreakpoint}>{optionName.securityName}</NameTag> <ExchangeText breakpoint={props.breakpoint}>{optionName.exchange}</ExchangeText><ExchangeTag breakpoint={props.breakpoint}></ExchangeTag></TagContainer>
                     </Option>
                 );
+
                 })}
             </OptionList>
         </DropdownBody>

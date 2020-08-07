@@ -1,29 +1,29 @@
-import { select, put, fork, take, call, takeLatest, cancel, cancelled, delay, all } from 'redux-saga/effects'
+import { select, put, call, takeLatest, cancelled, delay, all } from 'redux-saga/effects'
 import { NEW_STOCK_ENDPOINT_URL, NEWS_ENDPOINT_URL, PRICE_ENDPOINT_URL, POSSIBLE_SYMBOL_URL } from '../config/config.js'
 
 export const getNewStockData = (url, controller) => fetch(url, { signal: controller.signal })
     .then(response => {
         if(response.status===404){
-            console.log('Stock symbol does not exist!')
+            console.debug('Stock symbol does not exist!')
         }
         if (!response.ok) {
             throw Error(response.statusText)
         }
         return response.json()
     })
-    .catch(error => console.log(error.name, error.message))
+    .catch(error => console.error(error.name, error.message))
 
 export const getPossibleData = (url) => fetch(url)
 .then(response => {
     if(response.status===404){
-        console.log('Stock symbol does not exist!')
+        console.debug('Stock symbol does not exist!')
     }
     if (!response.ok) {
         throw Error(response.statusText)
     }
     return response.json()
 })
-.catch(error => console.log(error.name, error.message))
+.catch(error => console.error(error.name, error.message))
 
 export function* pollPrice(symbol) {
     const controller = new AbortController();
@@ -72,7 +72,7 @@ export function* searchSubmittedHandler(action) {
     const controller = new AbortController();
     const stockData = yield call(getNewStockData, NEW_STOCK_ENDPOINT_URL + requestParameters, controller);
     if (stockData === undefined) {
-        yield put({ type: 'STOCK_NOT_FOUND', payload: stockData })
+        yield put({ type: 'STOCK_NOT_FOUND'})
         return;
     }
 

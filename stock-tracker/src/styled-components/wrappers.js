@@ -3,9 +3,17 @@ import styled from 'styled-components'
 export const Grid = styled.div`
     position: relative;
     padding-top: 2%;
-    padding-bottom: 2%;
-    padding-right: 3%;
-    padding-left: 3%;
+    padding-bottom: 0;
+    padding-right: 10%;
+    padding-left: 10%;
+    @media (max-width: ${prop => prop.breakpoint ? prop.breakpoint : '15300px'}) {
+        padding-right: 5%;
+        padding-left: 5%;
+    }
+    @media (max-width: ${prop => prop.smallBreakpoint ? prop.smallBreakpoint : '950px'}) {
+        padding-right: 3%;
+        padding-left: 3%;
+    }
 `
 
 export const Row = styled.div`

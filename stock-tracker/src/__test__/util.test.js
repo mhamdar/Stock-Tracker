@@ -1,10 +1,10 @@
 
 import {getTimeTicks, getPriceTicks, unixToTimePassed, findLowValue, findHighValue} from '../util'
-import sampleChart from './testChart'
+import sampleChart from './mocks/testChart'
 
 test('unixToTimePassed', () => {
-  expect(unixToTimePassed(Date.now()-1000)).toBe("just now")
-  expect(unixToTimePassed(Date.now()-6000)).toBe("moments ago")
+  expect(unixToTimePassed(Date.now()-1000)).toBe("Just now")
+  expect(unixToTimePassed(Date.now()-6000)).toBe("Moments ago")
   expect(unixToTimePassed(Date.now()-91000)).toBe("1 minute ago")
   expect(unixToTimePassed(Date.now()-121000)).toBe("2 minutes ago")
   expect(unixToTimePassed(Date.now()-3601000)).toBe("1 hour ago")
@@ -224,7 +224,7 @@ const res5 = [ "Jul 23, 19", "Jan 21, 20", "Jul 20, 20"]
 const res6 = ["Jul 23, 15", "Jan 8, 18", "Apr 29, 20"]
 const res7 = ["Jul 24, 15", "Jan 22, 18" , "Jul 22, 20"]
 test('getTimeTicks', () => {
-  expect(getTimeTicks(testChart1, '1D')).toStrictEqual(res1)
+  //expect(getTimeTicks(testChart1, '1D')).toStrictEqual(res1)
   expect(getTimeTicks(sampleChart.oneday, '1D')).toStrictEqual(res2)
   expect(getTimeTicks(sampleChart.fiveday, '5D')).toStrictEqual(res3)
   expect(getTimeTicks(sampleChart.onemonth, '1M')).toStrictEqual(res4)

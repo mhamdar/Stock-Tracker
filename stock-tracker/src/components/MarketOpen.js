@@ -6,8 +6,8 @@ const MarketOpen = () => {
     return (
         <div>
             <Row columnGap='15px' >
-                <Col hideWidth='900px'>
-                    <RealTimePriceDate>Real-Time Price as of July 24, 2020</RealTimePriceDate>
+                <Col hideWidth='950px'>
+                    <RealTimePriceDate>Real-Time Price as of August 7, 2020, 9:30AM EST</RealTimePriceDate>
                 </Col>
                 <Col >
                     <MarketStatus> <Sun color='#ffbb5e' height='14px'/> Market Open </MarketStatus>

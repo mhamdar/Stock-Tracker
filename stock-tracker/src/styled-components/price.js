@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const StyledPrice = styled.p`
   margin: 0px;
-  font-family: 'Lato', sans-serif;
+  font-family: Lato;
   font-size: ${prop => prop.fontSize ? prop.fontSize : '40px'};
   @media (max-width: ${prop => prop.breakpoint ? prop.breakpoint : '0px'}) {
     font-size: 30px;
@@ -22,7 +22,7 @@ export const StyledPrice = styled.p`
 
 export const PriceChange = styled.p`
   margin: 0px;
-  font-family: 'Lato', sans-serif;
+  font-family: Lato;
   font-size: ${prop => prop.fontSize ? prop.fontSize : '40px'};
   @media (max-width: ${prop => prop.breakpoint ? prop.breakpoint : '0px'}) {
     font-size: 30px;

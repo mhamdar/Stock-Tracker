@@ -1,11 +1,10 @@
+import { render, screen } from '@testing-library/react';
 import React from 'react';
 import { Provider } from 'react-redux';
-import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
-import sampleData from './sampleData'
-import Keystats from '../components/keyStats';
-import { render, screen, cleanup } from '@testing-library/react'
-import { findHighValue, findLowValue } from '../util'
+import Keystats from '../components/KeyStats';
+import { findHighValue, findLowValue, numberToPercent, numberWithCommas } from '../util';
+import sampleData from './mocks/sampleData';
 
 const mockStore = configureStore([]);
 
@@ -109,13 +108,13 @@ describe('Keystats Component', () => {
     it('should render correct value for volume', () => {
         component(store)
         const volume = screen.getByText('Volume').closest('tr').children[1]
-    expect(volume.innerHTML).toBe(' '+newState.keyStats.iexVolume+' ');
+    expect(volume.innerHTML).toBe(' '+numberWithCommas(newState.keyStats.iexVolume)+' ');
     });
 
     it('should render correct value for market cap', () => {
         component(store)
         const marketCap = screen.getByText('Market Cap').closest('tr').children[1]
-    expect(marketCap.innerHTML).toBe(' '+newState.keyStats.marketCap+' ');
+    expect(marketCap.innerHTML).toBe(' '+numberWithCommas(newState.keyStats.marketCap)+' ');
     });
 
     it('should render correct value for P/E ratio', () => {
@@ -139,7 +138,7 @@ describe('Keystats Component', () => {
     it('should render correct value for total average volume', () => {
         component(store)
         const avgVolume = screen.getByText('Total Avg Volume').closest('tr').children[1]
-    expect(avgVolume.innerHTML).toBe(' '+newState.keyStats.avgTotalVolume+' ');
+    expect(avgVolume.innerHTML).toBe(' '+numberWithCommas(newState.keyStats.avgTotalVolume)+' ');
     });
 
     it('should render correct value for earnings per share', () => {
@@ -151,7 +150,7 @@ describe('Keystats Component', () => {
     it('should render correct value for dividend & yield', () => {
         component(store)
         const dividend = screen.getByText('Dividend & Yield').closest('tr').children[1]
-    expect(dividend.innerHTML).toBe(' '+newState.keyStats.dividendYield===undefined?newState.keyStats.dividendYield:' '+' ');
+    expect(dividend.innerHTML).toBe(' '+newState.keyStats.dividendYield===undefined?numberToPercent(newState.keyStats.dividendYield):' '+' ');
     });
    
   });

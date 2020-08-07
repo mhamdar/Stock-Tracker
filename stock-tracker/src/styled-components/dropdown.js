@@ -1,27 +1,16 @@
 import styled from 'styled-components'
 
 export const DropdownBody = styled.div`
-   width:98%; 
+   width:100%; 
    position:relative;
    top:7px;
    margin-bottom:22px;
-   @media (max-width: ${prop => prop.xlgbreakpoint ? prop.xlgbreakpoint : '0px'}) {
-    width:97.2%;
-  }
-  @media (max-width: ${prop => prop.lgbreakpoint ? prop.lgbreakpoint : '0px'}) {
-    width:96.3%;
-  }
-  @media (max-width: ${prop => prop.breakpoint ? prop.breakpoint : '0px'}) {
-    width:94.9%;
-  }
-  @media (max-width: ${prop => prop.smallBreakpoint ? prop.smallBreakpoint : '0px'}) {
-    width:89.9%;
-  }
 `
 export const OptionList = styled.ul`
     margin:0;
     border-top: 2px solid #7fb3ff;
     position:absolute;
+    padding-left: 0px;
     top:0;
     list-style: none;
     width: 100%;
@@ -29,13 +18,14 @@ export const OptionList = styled.ul`
     z-index:200;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
     background-image: linear-gradient(to bottom, #001330 2%, rgba(0, 8, 19, 0.8) 177%);
-    
 `
 export const Option = styled.li`
     height:40px;
+    padding-left: 1%;
     &:hover {
         background-color: #1c395d
     }
+    cursor: pointer;
 `
 
 export const SymbolTag = styled.label`
@@ -49,9 +39,10 @@ export const SymbolTag = styled.label`
     line-height: normal;
     letter-spacing: normal;
     text-align: left;
-    color: #0068ff;
+    color: #7fb3ff;
     position:relative;
     top:8px;
+    cursor: pointer;
 `
 export const NameTag = styled.label`
     width:600px;
@@ -71,6 +62,7 @@ export const NameTag = styled.label`
     @media (max-width: ${prop => prop.breakpoint ? prop.breakpoint : '0px'}) {
         font-size:12px;
       }
+      cursor: pointer;
 `
 export const ExchangeTag = styled.p`
     width: 76px;
@@ -86,6 +78,7 @@ export const ExchangeTag = styled.p`
     @media (max-width: ${prop => prop.breakpoint ? prop.breakpoint : '0px'}) {
         display:none;
       }
+      cursor: pointer;
 `
 
 export const ExchangeText = styled.label`
@@ -107,9 +100,11 @@ export const ExchangeText = styled.label`
     @media (max-width: ${prop => prop.breakpoint ? prop.breakpoint : '0px'}) {
         display:none;
       }
+      cursor: pointer;
 `
 
 export const TagContainer = styled.label`
     position:absolute;
     left:150px;
+    cursor: pointer;
 `

@@ -18,7 +18,6 @@ export const rootReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'STOCK_RECEIVED':
             const stock = action.payload
-            console.log("stock in STOCK_REC", stock)
             const keyStats = {
                 previousClose: stock.previousClose,
                 iexVolume: stock.iexVolume,
@@ -55,25 +54,22 @@ export const rootReducer = (state = initialState, action) => {
                 isLoading: true,
                 possible: []
             }
+            
         case 'NEWS_RECEIVED':
-            console.debug("news in NEWS_RECEIVED:", action.payload)
             return {
                 ...state,
                 news: action.payload
             }
         case 'PRICE_RECEIVED':
-            console.log("chart in PRICE_RECEIVED:", action.payload.chart)
-            console.log("price in PRICE_RECEIVED:", action.payload.latestPrice)
-
             return {
                 ...state,
-                price: action.payload.latestPrice,
-                priceChange: action.payload.change,
-                priceChangePercent: action.payload.changePercent,
+                price: action.payload.price,
+                priceChange: action.payload.priceChange,
+                priceChangePercent: action.payload.priceChangePercent,
                 chart: action.payload.chart
             }
+
         case 'POSSIBLE_RECEIVED':
-            //console.log("possible in POSSIBLE_RECEIVED:", action.payload)
             return {
                 ...state,
                 possible: action.payload

@@ -2,4 +2,5 @@ body{
   background: linear-gradient(145deg, #06387d, #0c0707);
   background-repeat: no-repeat;
   background-attachment: fixed;
+  margin: 0px;
 }
